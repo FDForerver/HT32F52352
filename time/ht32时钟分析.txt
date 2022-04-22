@@ -1,0 +1,27 @@
+
+
+32-bit ARM® CortexTM-M0+ 处理器内核
+高达 48MHz 的工作频率
+
+
+系统时钟分析
+
+SystemCoreClock = __CK_AHB   -----》48Mhz
+
+__CK_AHB    (__CK_SYS >> HCLK_DIV) ---》48Mhz 1分频相当于没变
+ HCLK_DIV          (0)     /*!< 0: DIV1,     1: DIV2,   2: DIV4,   3: DIV8,   4: DIV16,  5: DIV32  
+
+
+_CK_SYS    __CK_PLL    
+__CK_PLL    (__CK_VCO >> PLL_NO2_DIV) --》48Mhz 一分频 相当于没变
+
+
+
+ PLL_NO2_DIV       (0)     /*!< 0: DIV1,     1: DIV2,   2: DIV4,   3: DIV8  
+ 
+ 
+ 
+__CK_VCO    (HSE_VALUE * PLL_NF2_DIV)   --》8000000*6 = 48Mhz
+
+ HSE_VALUE       8000000UL 
+  PLL_NF2_DIV       (6)     /*!< 1~16: DIV1~DIV16    
